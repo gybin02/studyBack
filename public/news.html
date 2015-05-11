@@ -13,12 +13,13 @@
 <body ng-app="newsModule">
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">二手车交易</a>
+        <a class="navbar-brand" href="#">管理后台</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="#">新闻管理</a></li>
-            <li><a href="carAudit.html">卖车审核</a></li>
+            <li><a href="carAudit.html">课程管理</a></li>
+            <li><a href="carAudit.html">课程报名情况管理</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     更多 <b class="caret"></b>
@@ -40,7 +41,7 @@
 
 
     <div>
-        <h1>使用AVOS Cloud 和 AngularJs 实现管理后台</h1>
+        <h1>管理后台</h1>
 
         <div>
             <h3>新闻 列表</h3>
@@ -50,35 +51,20 @@
             <thead>
             <tr>
                 <th>
-                    编辑
-                </th>
-                <th>
                     删除
                 </th>
                 <th>
                     图片地址
                 </th>
-                <th>
-                    新闻标题
-                </th>
-
-
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="todo in news">
+            <tr ng-repeat="news in newsArray">
                 <td>
-                    <button data-toggle="modal" ng-click="editTemp(todo)"
-                            data-target="#myModal"  class="btn btn-info">编辑</button>
+                    <button ng-click="deleteItem(news)" class="btn btn-danger">删除</button>
                 </td>
                 <td>
-                    <button ng-click="deleteItem(todo)" class="btn btn-danger">删除</button>
-                </td>
-                <td>
-                    <img src="{{todo.image_url}}" >
-                </td>
-                <td>
-                    <a href=" {{todo.news_url}}">{{todo.news_desc}}</a>
+                    <p>{{news.content}} </p>
                 </td>
             </tr>
 
@@ -93,21 +79,9 @@
 
         <form ng-submit="addItem()">
             <div class="form-group">
-                <label for="input_title">名称</label>
+                <label for="input_title">新闻内容</label>
                 <input type="text" class="form-control" id="input_title"
-                       placeholder="请输入名称" ng-model="newItem.news_desc">
-            </div>
-            <div class="form-group">
-                <label for="input_url">资讯URL输入</label>
-                <input type="text" id="input_url" ng-model="newItem.news_url">
-
-                <p class="help-block">输入具体的访问地址如：http://www.baidu.com</p>
-            </div>
-            <div class="form-group">
-                <label for="input_image">新闻图片地址</label>
-                <input type="text" id="input_image" ng-model="newItem.image_url">
-
-                <p class="help-block">输入具体的访问地址如：http://www.baidu.com</p>
+                       placeholder="请输入名称" ng-model="newItem.content">
             </div>
             <button type="submit" class="btn btn-info">提交</button>
             <hr>

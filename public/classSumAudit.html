@@ -1,0 +1,102 @@
+carAudit.html<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AVOS Cloud Todo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="lib/angular.js"></script>
+    <script src="lib/av.js"></script>
+    <script src="news.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body ng-app="newsModule">
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">二手车交易</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="news.html">新闻管理</a></li>
+            <li class="active"><a href="#">卖车审核</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    更多 <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">jmeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li><a href="#">Jasper Report</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container" ng-controller="CarCtrl">
+    <div>
+        <h1>使用AVOS Cloud 和 AngularJs 实现管理后台</h1>
+
+        <div>
+            <h3>二手车审核列表</h3>
+        </div>
+        <table class="table table-bordered">
+            <caption>基本的表格布局</caption>
+            <thead>
+            <tr>
+                <th>
+                    审核通过
+                </th>
+                <th>
+                    拒绝
+                </th>
+                <th>
+                    汽车详情
+                </th>
+                <th>
+                    新闻标题
+                </th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="car in cars">
+                <td>
+                    <button data-toggle="modal" ng-click="passCar(car)"
+                            data-target="#myModal" class="btn btn-info"> 审核通过
+                    </button>
+                </td>
+                <td>
+                    <button ng-click="denyCar(car)" class="btn btn-danger">拒绝</button>
+                </td>
+                <td>
+                    <img src="{{car.pictureurl}}" alt="汽车照片"/>
+                </td>
+                <td>
+                    {{car.car_name}}<br>
+                   城市：{{car.ccity}}<br>
+                    联系号码： {{car.phone_number}}<br>
+                    里程数：{{car.mileage}}<br>
+                   新旧情况： {{car.car_type}}<br>
+                   二手价格： {{car.car_price}}<br>
+                   4S 店价格： {{car.cprice_4s}}<br>
+                    发动机：{{car.gearbox}}<br>
+                    颜色： {{car.ccolor}}<br>
+                    保险时间：{{car.vehicle_insurance}}<br>
+                </td>
+            </tr>
+
+            </tbody>
+
+
+        </table>
+    </div>
+    <hr>
+</div>
+</div>
+</body>
+</html>
