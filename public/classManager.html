@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AVOS Cloud Todo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="lib/angular.js"></script>
+    <script src="lib/av.js"></script>
+    <script src="news.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body ng-app="newsModule">
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">后台管理</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="news.html">新闻管理</a></li>
+            <li class="active"><a href="#">课程管理</a></li>
+            <li><a href="classSumAudit.html">课程报名情况管理</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    更多 <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">jmeter</a></li>
+                    <li><a href="#">EJB</a></li>
+                    <li><a href="#">Jasper Report</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">分离的链接</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">另一个分离的链接</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container" ng-controller="ClassCtrl">
+    <div>
+        <h1>管理后台</h1>
+
+        <div>
+            <h3>课程管理</h3>
+        </div>
+        <table class="table table-bordered">
+            <caption>基本的表格布局</caption>
+            <thead>
+            <tr>
+                <th>
+                    编辑
+                </th>
+                <th>
+                    删除
+                </th>
+                <!--<th>-->
+                    <!--课程名称-->
+                <!--</th>-->
+                <!--<th>-->
+                    <!--课程描述-->
+                <!--</th>-->
+                <th>
+                    老师
+                </th>
+                <th>
+                    课程安排
+                </th>
+                <th>
+                    时间安排
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="subject in subjectArray">
+                <td>
+                    <button data-toggle="modal" ng-click="editSubject(subject)"
+                            data-target="#myModal" class="btn btn-info"> 编辑
+                    </button>
+                </td>
+                <td>
+                    <button ng-click="deleteSubject(subject)" class="btn btn-danger">删除</button>
+                </td>
+                <!--<td>-->
+                    <!--<p>{{class.name}}</p>-->
+                <!--</td>-->
+                <!--<td>-->
+                    <!--<p>{{class.description}}</p>-->
+                <!--</td>-->
+                <td>
+                    <p>{{subject.teacher}}</p></td>
+                <td>
+                    <p>{{subject.course_arrangement}}</p>
+                </td>
+                <td>
+                    <p>{{subject.schooltime}}</p>
+                    <p>{{subject.place}}</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+
+    <hr>
+    <div class="table-bordered">
+        <h3>创建 课程</h3>
+
+        <form ng-submit="addSubject()">
+            <div class="form-group">
+                <label>课程分类11</label>
+                <select  ng-model="selected"
+                         ng-options="categorySub.name for categorySub in categorySubjectArray" ng-click="test()">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+            <p>{{selected.description}}</p>
+            <div class="form-group">
+                <label>老师名称</label>
+                <input type="text" class="form-control"
+                       placeholder="请输入老师名称" ng-model="subjectTemp.teacher">
+            </div>
+            <div class="form-group">
+                <label>课程安排</label>
+                <input type="text" class="form-control"
+                       placeholder="请输入课程安排" ng-model="subjectTemp.course_arrangement">
+            </div>
+            <div class="form-group">
+                <label>时间安排</label>
+                <input type="text" class="form-control"
+                       placeholder="请输入时间安排" ng-model="subjectTemp.schooltime">
+            </div>
+            <div class="form-group">
+                <label>上课地点</label>
+                <input type="text" class="form-control"
+                       placeholder="请输入上课地点" ng-model="subjectTemp.place">
+            </div>
+            <div class="form-group">
+                <label>师资介绍</label>
+                <input type="text" class="form-control"
+                       placeholder="请输入师资介绍" ng-model="subjectTemp.teacher_description">
+            </div>
+            <button type="submit" class="btn btn-info">提交</button>
+            <hr>
+        </form>
+    </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        模态框（Modal）标题
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form ng-submit="editSubject()">
+                        <div class="form-group">
+                            <label for="input_model_title">教师</label>
+                            <input type="text" class="form-control" id="input_model_title"
+                                   placeholder="请输入教师名字" ng-model="subjectTemp.teacher">
+                        </div>
+                        <div class="form-group">
+                            <label for="input_model_url">教学安排</label>
+                            <input type="text" id="input_model_url" ng-model="subjectTemp.course_arrangement">
+
+                            <p class="help-block">输入具体的访问地址如：http://www.baidu.com</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="input_model_image">上课时间</label>
+                            <input type="text" id="input_model_image" ng-model="subjectTemp.schooltime">
+                        </div>
+                        <div class="form-group">
+                            <label for="input_model_image">师资介绍</label>
+                            <input type="text"  ng-model="subjectTemp.teacher_description">
+                        </div>
+                        <div class="form-group">
+                            <label for="input_model_image">上课地点</label>
+                            <input type="text" ng-model="subjectTemp.place">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">关闭
+                            </button>
+                            <button type="submit" class="btn btn-info">提交</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+
+</div>
+</div>
+</body>
+</html>
