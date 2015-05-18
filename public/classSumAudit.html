@@ -23,8 +23,60 @@
         </ul>
     </div>
 </nav>
-<div class="container" ng-controller="CarCtrl">
-        <h1>正在开发中。。。请等待</h1>
+<div class="container" ng-controller="ClassCtrl">
+    <div>
+        <div>
+            <h3>课程报名统计</h3>
+        </div>
+        <table class="table table-bordered">
+            <caption>基本的表格布局</caption>
+            <thead>
+            <tr>
+                <th>
+                    报名审核
+                </th>
+                <th>
+                    老师
+                </th>
+                <th>
+                    报名人数
+                </th>
+                <th>
+                    课程安排
+                </th>
+                <th>
+                    时间安排
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="subject in subjectCountArray">
+                <td>
+                    <button data-toggle="modal" ng-click="cancelSubject(subject)"
+                            data-target="#myModal" class="btn btn-info">
+                        取消课程
+                    </button>
+                </td>
+
+                <td>
+                    <p>{{subject.teacher}}</p></td>
+                <td>
+                    <p>{{subject.count}}</p></td>
+
+                <td>
+                    <p>{{subject.course_arrangement}}</p>
+                </td>
+                <td>
+                    <p>{{subject.schooltime}}</p>
+
+                    <p>{{subject.place}}</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+
 </div>
 </body>
 </html>

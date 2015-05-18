@@ -94,10 +94,38 @@
 		$scope.subjectArray = [];
 		$scope.subjectTemp = {};
 		$scope.selected={};
+		$scope.subjectCountArray={};
 
 		$scope.categorySubjectArray =[];
 
 		$scope.categoryArray = [];
+
+		$scope.getCategorySubject = function() {
+			var query = new AV.Query(Subject);
+			query.where().greaterThan("count",0);
+			query.find({
+				success:function (results){
+					$scope.$apply(function(){
+						$scope.subjectCountArray = JSON.parse(JSON.stringify(results));
+					})
+				}
+			})
+		};
+		$scope.cancelSubject = function(itemParam) {
+			var query = new AV.Query(Subject);
+			query.get(itemParam.get('subject_id'), {
+				success: function(post) {
+					post.set('count',0);
+					post.save();
+					alert("取消报名成功");
+					$scope.subjectCountArray.splice($scope.subjectCountArray.indexOf(itemParam),1);
+				},
+				error: function(error) {
+					throw 'Got an error ' + error.code + ' : ' + error.message;
+				}
+			});
+		}
+
 
 		$scope.getCategorySubject = function() {
 			var query = new AV.Query(CategorySubject);
