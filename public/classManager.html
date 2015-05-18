@@ -111,12 +111,12 @@
             <div class="form-group">
                 <label>时间安排</label>
                 <input type="text" class="form-control"
-                       placeholder="请输入时间安排" ng-model="subjectTemp.schooltime">
+                       placeholder="请输入上课 如每周五19:00-21:00" ng-model="subjectTemp.schooltime">
             </div>
             <div class="form-group">
                 <label>上课地点</label>
                 <input type="text" class="form-control"
-                       placeholder="请输入上课地点" ng-model="subjectTemp.place">
+                       placeholder="请输入上课地点 如3-201" ng-model="subjectTemp.place">
             </div>
             <div class="form-group">
                 <label>师资介绍</label>
@@ -138,7 +138,7 @@
                         &times;
                     </button>
                     <h4 class="modal-title" id="myModalLabel">
-                        模态框（Modal）标题
+                        修改课程信息
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -150,21 +150,20 @@
                         </div>
                         <div class="form-group">
                             <label for="input_model_url">教学安排</label>
-                            <input type="text" id="input_model_url" ng-model="subjectTemp.course_arrangement">
+                            <input type="text" id="input_model_url" ng-model="subjectTemp.course_arrangement"  placeholder="请输入教学安排">
 
-                            <p class="help-block">输入具体的访问地址如：http://www.baidu.com</p>
                         </div>
                         <div class="form-group">
                             <label for="input_model_image">上课时间</label>
-                            <input type="text" id="input_model_image" ng-model="subjectTemp.schooltime">
+                            <input type="text" id="input_model_image" ng-model="subjectTemp.schooltime"  placeholder="请输入上课时间 如每周五19:00-21:00">
                         </div>
                         <div class="form-group">
                             <label for="input_model_image">师资介绍</label>
-                            <input type="text"  ng-model="subjectTemp.teacher_description">
+                            <input type="text"  ng-model="subjectTemp.teacher_description"  placeholder="请输入师资介绍">
                         </div>
                         <div class="form-group">
                             <label for="input_model_image">上课地点</label>
-                            <input type="text" ng-model="subjectTemp.place">
+                            <input type="text" ng-model="subjectTemp.place"  placeholder="请输入上课地点 如3-201">
                         </div>
 
                         <div class="modal-footer">
