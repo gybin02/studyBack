@@ -100,9 +100,9 @@
 
 		$scope.categoryArray = [];
 
-		$scope.getCategorySubject = function() {
+		$scope.getCountSubject = function() {
 			var query = new AV.Query(Subject);
-			query.where().greaterThan("count",0);
+			query.greaterThan("count",0);
 			query.find({
 				success:function (results){
 					$scope.$apply(function(){
@@ -113,12 +113,14 @@
 		};
 		$scope.cancelSubject = function(itemParam) {
 			var query = new AV.Query(Subject);
-			query.get(itemParam.get('subject_id'), {
+			query.get(itemParam.objectId, {
 				success: function(post) {
 					post.set('count',0);
 					post.save();
 					alert("取消报名成功");
-					$scope.subjectCountArray.splice($scope.subjectCountArray.indexOf(itemParam),1);
+					$scope.$apply(function(){
+						$scope.subjectCountArray.splice($scope.subjectCountArray.indexOf(itemParam),1);
+					})
 				},
 				error: function(error) {
 					throw 'Got an error ' + error.code + ' : ' + error.message;
@@ -217,7 +219,7 @@
 		}
 		$scope.getCategorySubject();
 		$scope.getSubject();
-
+		$scope.getCountSubject();
 	})
 
 
