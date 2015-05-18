@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AVOS Cloud Todo</title>
+    <title>课程管理</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="lib/angular.js"></script>
     <script src="lib/av.js"></script>
@@ -13,46 +13,29 @@
 <body ng-app="newsModule">
 <nav class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">后台管理</a>
+        <a class="navbar-brand" href="#">学通卡后台管理系统</a>
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="news.html">新闻管理</a></li>
+           
             <li class="active"><a href="#">课程管理</a></li>
             <li><a href="classSumAudit.html">课程报名情况管理</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    更多 <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">jmeter</a></li>
-                    <li><a href="#">EJB</a></li>
-                    <li><a href="#">Jasper Report</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">分离的链接</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">另一个分离的链接</a></li>
-                </ul>
-            </li>
+             <li><a href="news.html">资讯管理</a></li>
         </ul>
     </div>
 </nav>
 <div class="container" ng-controller="ClassCtrl">
     <div>
-        <h1>管理后台</h1>
-
-        <div>
-            <h3>课程管理</h3>
-        </div>
+      
         <table class="table table-bordered">
-            <caption>基本的表格布局</caption>
+            <caption><h2>课程列表</h2></caption>
             <thead>
             <tr>
                 <th>
-                    编辑
+                    操作
                 </th>
                 <th>
-                    删除
+                 操作
                 </th>
                 <!--<th>-->
                     <!--课程名称-->
@@ -104,11 +87,11 @@
 
     <hr>
     <div class="table-bordered">
-        <h3>创建 课程</h3>
+        <h3>新建课程</h3>
 
         <form ng-submit="addSubject()">
             <div class="form-group">
-                <label>课程分类11</label>
+                <label>请选择课程分类</label>
                 <select  ng-model="selected"
                          ng-options="categorySub.name for categorySub in categorySubjectArray" ng-click="test()">
                     <option value="">请选择</option>
