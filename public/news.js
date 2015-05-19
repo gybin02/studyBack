@@ -90,6 +90,7 @@
 		var Subject=AV.Object.extend("subject");
 		var CategorySubject=AV.Object.extend("category_subject");
 		var Category=AV.Object.extend("category");
+		var UserSubject=AV.Object.extend("user_subject");
 
 		$scope.subjectArray = [];
 		$scope.subjectTemp = {};
@@ -121,6 +122,16 @@
 					$scope.$apply(function(){
 						$scope.subjectCountArray.splice($scope.subjectCountArray.indexOf(itemParam),1);
 					})
+					var q=new AV.Query(UserSubject);
+					q.equalTo("subject_id",itemParam.objectId);
+					q.destroyAll({
+						success:function(){
+
+						},
+						error:function(error){
+
+						}
+					});
 				},
 				error: function(error) {
 					throw 'Got an error ' + error.code + ' : ' + error.message;
