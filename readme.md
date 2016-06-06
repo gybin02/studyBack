@@ -17,6 +17,9 @@
 
 使用云代码在AVOS Cloud上托管您的网站，参见[云代码开发指南](https://cn.avoscloud.com/docs/cloud_code_guide.html)。
 
-## 小群的毕业设计：课程培训管理后台。
+## 小群的毕业设计：课程培训管理后台。 angularJS实现
 1. 修改了登录模块
 2. 使用了BootStrap 实现后台
+3.  课程管理
+4.  课程报名情况管理
+5.  资讯管理
