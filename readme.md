@@ -16,3 +16,7 @@
 ## 网站托管
 
 使用云代码在AVOS Cloud上托管您的网站，参见[云代码开发指南](https://cn.avoscloud.com/docs/cloud_code_guide.html)。
+
+## 小群的毕业设计：课程培训管理后台。
+1. 修改了登录模块
+2. 使用了BootStrap 实现后台
